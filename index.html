@@ -294,22 +294,22 @@ section{
 /* Incident Cards Grid */
 .incident-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:28px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
     margin-top:50px;
 }
 
 .incident-card{
     background:linear-gradient(135deg, rgba(15,23,42,.8), rgba(15,23,42,.6));
     border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:32px;
+    border-radius:16px;
+    padding:24px;
     transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position:relative;
     overflow:hidden;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:16px;
 }
 
 /* Gradient overlay on hover */
@@ -328,20 +328,20 @@ section{
 }
 
 .incident-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-6px);
     border-color:rgba(6,182,212,.4);
     box-shadow:0 8px 32px rgba(6, 182, 212, 0.1), inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 .incident-tag{
     display:inline-block;
-    font-size:0.75rem;
+    font-size:0.7rem;
     font-weight:700;
-    letter-spacing:1px;
+    letter-spacing:0.8px;
     color:var(--secondary);
     background:rgba(6,182,212,.15);
-    padding:6px 14px;
-    border-radius:20px;
+    padding:5px 12px;
+    border-radius:16px;
     border:1px solid rgba(6,182,212,.3);
     width:fit-content;
     position:relative;
@@ -349,21 +349,22 @@ section{
 }
 
 .incident-card h4{
-    font-size:1.4rem;
+    font-size:1.15rem;
     font-weight:700;
     color:var(--text);
     margin:0;
     position:relative;
     z-index:2;
+    line-height:1.3;
 }
 
 .incident-phase{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:8px;
     position:relative;
     z-index:2;
-    padding-bottom:16px;
+    padding-bottom:14px;
     border-bottom:1px solid rgba(255,255,255,.05);
 }
 
@@ -373,7 +374,7 @@ section{
 }
 
 .incident-phase span{
-    font-size:0.95rem;
+    font-size:0.8rem;
     font-weight:700;
     color:var(--secondary);
     text-transform:uppercase;
@@ -381,18 +382,18 @@ section{
 }
 
 .incident-phase p, .incident-phase div{
-    font-size:0.95rem;
+    font-size:0.9rem;
     color:var(--muted);
-    line-height:1.6;
+    line-height:1.5;
     margin:0;
 }
 
 code{
     background:rgba(59,130,246,.15);
     color:var(--secondary);
-    padding:3px 8px;
-    border-radius:6px;
-    font-size:0.9em;
+    padding:2px 6px;
+    border-radius:4px;
+    font-size:0.85em;
     font-family:'Courier New', monospace;
 }
 
@@ -482,11 +483,16 @@ footer{
 }
 
 .incident-card{
-    padding:24px;
+    padding:20px;
+    gap:14px;
 }
 
 .incident-card h4{
-    font-size:1.2rem;
+    font-size:1.1rem;
+}
+
+.incident-phase{
+    padding-bottom:12px;
 }
 }
 
@@ -501,25 +507,32 @@ footer{
 }
 
 .incident-card{
-    padding:20px;
-    gap:16px;
+    padding:16px;
+    gap:12px;
 }
 
 .incident-card h4{
-    font-size:1.1rem;
+    font-size:1rem;
+    line-height:1.2;
 }
 
 .incident-phase{
-    gap:8px;
-    padding-bottom:12px;
+    gap:6px;
+    padding-bottom:10px;
 }
 
 .incident-phase span{
-    font-size:0.85rem;
+    font-size:0.75rem;
 }
 
 .incident-phase p, .incident-phase div{
-    font-size:0.9rem;
+    font-size:0.85rem;
+    line-height:1.4;
+}
+
+.incident-tag{
+    font-size:0.65rem;
+    padding:4px 10px;
 }
 }
 </style>
@@ -654,51 +667,51 @@ Demonstrating technical depth and problem-solving methodology through actual inc
         <h4>Peak-Hour System Bypass</h4>
         <div class="incident-phase">
             <span>Problem</span>
-            <div>Critical Hospital Management System (HMS) failed completely during peak hours. The external vendor declared a total server outage with no ETA for recovery.</div>
+            <div>Critical HMS failed during peak hours. Vendor reported total outage with no ETA.</div>
         </div>
         <div class="incident-phase">
             <span>Root Cause</span>
-            <div>While the vendor reported a complete failure, proactive internal testing revealed that only the primary POS-integrated web node had crashed, while secondary application URLs remained active.</div>
+            <div>Proactive testing revealed only primary POS node crashed. Secondary URLs remained active.</div>
         </div>
         <div class="incident-phase">
             <span>Resolution</span>
-            <div>Independently identified the active secondary node, collaborated directly with the vendor engineering team to secure emergency authorization, and immediately routed hospital traffic to the working URL to prevent disruption.</div>
+            <div>Identified active secondary node, secured vendor authorization, routed traffic to working URL.</div>
         </div>
     </div>
 
     <!-- Card 2: The Honest Story (Vendor Management & Diagnostics) -->
     <div class="incident-card reveal">
         <div class="incident-tag">NETWORK & VENDOR MGMT</div>
-        <h4>HMS Connectivity & Session Fix</h4>
+        <h4>HMS Connectivity Fix</h4>
         <div class="incident-phase">
             <span>Problem</span>
-            <div>The Hospital Management System (HMS) suddenly became inaccessible across all 30 endpoints despite active internet connectivity.</div>
+            <div>HMS inaccessible across 30 endpoints despite active internet connectivity.</div>
         </div>
         <div class="incident-phase">
             <span>Root Cause</span>
-            <div>Diagnosed that the issue was not on the endpoint level, but rather the network firewall's "live count" (concurrent session limit) had maxed out, dropping new application packets.</div>
+            <div>Firewall "live count" (session limit) maxed out, dropping new application packets.</div>
         </div>
         <div class="incident-phase">
             <span>Resolution</span>
-            <div>Performed an immediate reset of the firewall live count to instantly restore hospital operations, and effectively escalated the ticket to the external firewall vendor for long-term configuration management.</div>
+            <div>Reset firewall live count to restore operations. Escalated to vendor for long-term fix.</div>
         </div>
     </div>
 
     <!-- Card 3: The Gritty Story (Command Line / DHCP) -->
     <div class="incident-card reveal">
         <div class="incident-tag">NETWORK & SECURITY</div>
-        <h4>CCTV IP Conflict Resolution</h4>
+        <h4>CCTV IP Conflict</h4>
         <div class="incident-phase">
             <span>Problem</span>
-            <div>Critical facility security cameras were randomly going offline and dropping connection to the monitoring system.</div>
+            <div>Critical security cameras randomly going offline and losing monitoring connection.</div>
         </div>
         <div class="incident-phase">
             <span>Root Cause</span>
-            <div>Ping tests showed intermittent replies. Used command-line diagnostics (<code>arp -a</code>) to analyze the ARP cache, identifying a local network DHCP IP conflict disrupting the camera's connectivity.</div>
+            <div>Used <code>arp -a</code> diagnostics to identify DHCP IP conflict on local network.</div>
         </div>
         <div class="incident-phase">
             <span>Resolution</span>
-            <div>Reconfigured the affected hardware with assigned static IP addresses to eliminate lease conflicts. Resulted in 100% camera uptime since implementation.</div>
+            <div>Configured static IPs on affected hardware. Achieved 100% camera uptime.</div>
         </div>
     </div>
 
