@@ -312,7 +312,6 @@ section{
     gap:16px;
 }
 
-/* Gradient overlay on hover */
 .incident-card::before{
     content:'';
     position:absolute;
@@ -397,44 +396,265 @@ code{
     font-family:'Courier New', monospace;
 }
 
+/* Enhanced Lab Grid */
 .lab-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:40px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+    margin-top:50px;
 }
 
 .lab-card{
-    background:var(--card);
-    padding:30px;
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,.05);
+    background:linear-gradient(135deg, rgba(15,23,42,.8), rgba(15,23,42,.6));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:28px;
+    transition:all 0.3s ease;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.lab-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(139,92,246,.1), transparent);
+    opacity:0;
+    transition:opacity 0.3s ease;
+    pointer-events:none;
+}
+
+.lab-card:hover::before{
+    opacity:1;
+}
+
+.lab-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(59,130,246,.3);
+    box-shadow:0 8px 28px rgba(59,130,246,0.12);
+}
+
+.lab-icon{
+    font-size:2.5rem;
+    margin-bottom:8px;
 }
 
 .lab-card h3{
-    font-weight:600;
-    margin-bottom:15px;
+    font-size:1.25rem;
+    font-weight:700;
+    color:var(--text);
+    margin:0;
+    position:relative;
+    z-index:2;
 }
 
+.lab-specs{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:12px 0;
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    position:relative;
+    z-index:2;
+}
+
+.lab-spec-item{
+    font-size:0.9rem;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.lab-spec-label{
+    color:var(--secondary);
+    font-weight:600;
+}
+
+.lab-spec-value{
+    color:var(--text);
+    font-weight:500;
+}
+
+.lab-skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    position:relative;
+    z-index:2;
+}
+
+.skill-tag{
+    background:rgba(59,130,246,.2);
+    color:var(--primary);
+    padding:5px 12px;
+    border-radius:12px;
+    font-size:0.8rem;
+    font-weight:600;
+    border:1px solid rgba(59,130,246,.3);
+}
+
+/* Enhanced Certificate Badges */
 .badges{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-    margin-top:40px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+    margin-top:50px;
 }
 
 .badge{
-    text-align:center;
-    background:rgba(59,130,246,.08);
-    padding:40px;
-    border-radius:24px;
-    border:1px solid rgba(59,130,246,.25);
+    background:linear-gradient(135deg, rgba(59,130,246,.08), rgba(139,92,246,.08));
+    border:1px solid rgba(59,130,246,.2);
+    border-radius:16px;
+    padding:28px;
+    transition:all 0.3s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.badge::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(6,182,212,.1), transparent);
+    opacity:0;
+    transition:opacity 0.3s ease;
+    pointer-events:none;
+}
+
+.badge:hover::before{
+    opacity:1;
+}
+
+.badge:hover{
+    transform:translateY(-4px);
+    border-color:rgba(59,130,246,.4);
+    box-shadow:0 8px 28px rgba(59,130,246,0.12);
 }
 
 .badge h3{
     font-size:2rem;
-    margin-bottom:10px;
     font-weight:700;
+    color:var(--text);
+    margin:0 0 8px 0;
+    position:relative;
+    z-index:2;
+}
+
+.badge-title{
+    font-size:0.95rem;
+    color:var(--muted);
+    margin-bottom:16px;
+    position:relative;
+    z-index:2;
+}
+
+.cert-meta{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:16px 0;
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    position:relative;
+    z-index:2;
+}
+
+.meta-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.9rem;
+}
+
+.meta-label{
+    color:var(--secondary);
+    font-weight:600;
+}
+
+.meta-value{
+    color:var(--text);
+    font-weight:500;
+}
+
+.progress-bar{
+    width:100%;
+    height:6px;
+    background:rgba(255,255,255,.05);
+    border-radius:3px;
+    overflow:hidden;
+    margin-top:8px;
+    position:relative;
+    z-index:2;
+}
+
+.progress-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius:3px;
+    transition:width 0.4s ease;
+}
+
+.status-badge{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:700;
+    margin-top:12px;
+    position:relative;
+    z-index:2;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+}
+
+.status-inprogress{
+    background:rgba(59,130,246,.2);
+    color:var(--primary);
+    border:1px solid rgba(59,130,246,.4);
+}
+
+.cert-skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+    position:relative;
+    z-index:2;
+}
+
+.cert-skill{
+    background:rgba(59,130,246,.15);
+    color:var(--primary);
+    padding:4px 10px;
+    border-radius:10px;
+    font-size:0.75rem;
+    font-weight:600;
+}
+
+.cert-link{
+    margin-top:12px;
+    position:relative;
+    z-index:2;
+}
+
+.cert-link a{
+    color:var(--secondary);
+    font-size:0.85rem;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:0.3s;
+}
+
+.cert-link a:hover{
+    color:var(--primary);
 }
 
 footer{
@@ -478,21 +698,12 @@ footer{
     display:none;
 }
 
-.incident-grid{
+.lab-grid{
     grid-template-columns:1fr;
 }
 
-.incident-card{
-    padding:20px;
-    gap:14px;
-}
-
-.incident-card h4{
-    font-size:1.1rem;
-}
-
-.incident-phase{
-    padding-bottom:12px;
+.badges{
+    grid-template-columns:1fr;
 }
 }
 
@@ -506,33 +717,21 @@ footer{
     font-size:2.5rem;
 }
 
-.incident-card{
-    padding:16px;
+.lab-card{
+    padding:20px;
     gap:12px;
 }
 
-.incident-card h4{
-    font-size:1rem;
-    line-height:1.2;
+.lab-card h3{
+    font-size:1.1rem;
 }
 
-.incident-phase{
-    gap:6px;
-    padding-bottom:10px;
+.badge{
+    padding:20px;
 }
 
-.incident-phase span{
-    font-size:0.75rem;
-}
-
-.incident-phase p, .incident-phase div{
-    font-size:0.85rem;
-    line-height:1.4;
-}
-
-.incident-tag{
-    font-size:0.65rem;
-    padding:4px 10px;
+.badge h3{
+    font-size:1.8rem;
 }
 }
 </style>
@@ -721,45 +920,88 @@ Demonstrating technical depth and problem-solving methodology through actual inc
 
 <section id="lab">
 
-<h2 class="section-title">Home Lab</h2>
+<h2 class="section-title">Home Lab Environment</h2>
 
 <p class="section-subtitle">
-Active Directory and Intune experience comes from a highly active 24GB RAM virtual lab,
-not from current production. The lab is used extensively for testing infrastructure
-concepts and administration workflows.
+Active production-grade virtual lab with 24GB RAM. Used extensively for testing infrastructure concepts, administration workflows, and real-world scenarios before production deployment.
 </p>
 
 <div class="lab-grid">
 
-<div class="lab-card">
-<h3>Active Directory</h3>
-<p>
-OU Design<br><br>
-User Administration<br><br>
-Group Policy Testing<br><br>
-Security Groups
-</p>
-</div>
+    <div class="lab-card reveal">
+        <div class="lab-icon">🔐</div>
+        <h3>Active Directory</h3>
+        <div class="lab-specs">
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">VMs:</span>
+                <span class="lab-spec-value">3 (DC + 2 Clients)</span>
+            </div>
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">Users/Groups:</span>
+                <span class="lab-spec-value">50+ configured</span>
+            </div>
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">Uptime:</span>
+                <span class="lab-spec-value">24/7 Active</span>
+            </div>
+        </div>
+        <div class="lab-skills">
+            <span class="skill-tag">OU Design</span>
+            <span class="skill-tag">GPO</span>
+            <span class="skill-tag">User Mgmt</span>
+            <span class="skill-tag">Security Groups</span>
+        </div>
+    </div>
 
-<div class="lab-card">
-<h3>Microsoft Intune</h3>
-<p>
-Device Enrollment<br><br>
-Compliance Policies<br><br>
-Application Deployment<br><br>
-Endpoint Security
-</p>
-</div>
+    <div class="lab-card reveal">
+        <div class="lab-icon">☁️</div>
+        <h3>Microsoft Intune</h3>
+        <div class="lab-specs">
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">Devices:</span>
+                <span class="lab-spec-value">5+ enrolled</span>
+            </div>
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">Policies:</span>
+                <span class="lab-spec-value">12 compliance</span>
+            </div>
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">Applications:</span>
+                <span class="lab-spec-value">15+ deployed</span>
+            </div>
+        </div>
+        <div class="lab-skills">
+            <span class="skill-tag">Device Enrollment</span>
+            <span class="skill-tag">App Deployment</span>
+            <span class="skill-tag">Compliance Policies</span>
+            <span class="skill-tag">Endpoint Security</span>
+        </div>
+    </div>
 
-<div class="lab-card">
-<h3>Virtual Infrastructure</h3>
-<p>
-Windows VMs<br><br>
-Linux VMs<br><br>
-Remote Deployments<br><br>
-Infrastructure Testing
-</p>
-</div>
+    <div class="lab-card reveal">
+        <div class="lab-icon">🖥️</div>
+        <h3>Virtual Infrastructure</h3>
+        <div class="lab-specs">
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">Hypervisor:</span>
+                <span class="lab-spec-value">Hyper-V</span>
+            </div>
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">VMs Running:</span>
+                <span class="lab-spec-value">8+ instances</span>
+            </div>
+            <div class="lab-spec-item">
+                <span class="lab-spec-label">OS Mix:</span>
+                <span class="lab-spec-value">Windows + Linux</span>
+            </div>
+        </div>
+        <div class="lab-skills">
+            <span class="skill-tag">Hyper-V</span>
+            <span class="skill-tag">VM Networking</span>
+            <span class="skill-tag">Windows Server</span>
+            <span class="skill-tag">Linux VMs</span>
+        </div>
+    </div>
 
 </div>
 
@@ -767,23 +1009,77 @@ Infrastructure Testing
 
 <section id="certifications">
 
-<h2 class="section-title">Certifications</h2>
+<h2 class="section-title">Professional Certifications</h2>
+
+<p class="section-subtitle">
+Pursuing industry-recognized Microsoft certifications to validate expertise in enterprise endpoint management and cloud infrastructure.
+</p>
 
 <div class="badges">
 
-<div class="badge">
-<h3>MD-102</h3>
-<p>Endpoint Administrator Associate</p>
-<br>
-<strong>IN PROGRESS</strong>
-</div>
+    <div class="badge reveal">
+        <h3>MD-102</h3>
+        <div class="badge-title">Endpoint Administrator Associate</div>
+        <div class="cert-meta">
+            <div class="meta-item">
+                <span class="meta-label">Status:</span>
+                <span class="meta-value">In Progress</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Progress:</span>
+                <span class="meta-value">60%</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Target:</span>
+                <span class="meta-value">July 2026</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+        </div>
+        <div class="cert-skills">
+            <span class="cert-skill">Device Management</span>
+            <span class="cert-skill">Intune</span>
+            <span class="cert-skill">Security</span>
+            <span class="cert-skill">Co-Management</span>
+        </div>
+        <div class="status-badge status-inprogress">📚 Studying</div>
+        <div class="cert-link">
+            <a href="https://learn.microsoft.com/en-us/credentials/certifications/m365-endpoint-administrator/" target="_blank">Learn More →</a>
+        </div>
+    </div>
 
-<div class="badge">
-<h3>AZ-104</h3>
-<p>Azure Administrator Associate</p>
-<br>
-<strong>IN PROGRESS</strong>
-</div>
+    <div class="badge reveal">
+        <h3>AZ-104</h3>
+        <div class="badge-title">Azure Administrator Associate</div>
+        <div class="cert-meta">
+            <div class="meta-item">
+                <span class="meta-label">Status:</span>
+                <span class="meta-value">In Progress</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Progress:</span>
+                <span class="meta-value">45%</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Target:</span>
+                <span class="meta-value">August 2026</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%;"></div>
+            </div>
+        </div>
+        <div class="cert-skills">
+            <span class="cert-skill">Azure Services</span>
+            <span class="cert-skill">VMs & Storage</span>
+            <span class="cert-skill">Networking</span>
+            <span class="cert-skill">IAM</span>
+        </div>
+        <div class="status-badge status-inprogress">📚 Studying</div>
+        <div class="cert-link">
+            <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/" target="_blank">Learn More →</a>
+        </div>
+    </div>
 
 </div>
 
