@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gokulnath | IT Administrator</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -37,6 +36,7 @@
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s ease-out;
+    will-change: opacity, transform;
 }
 .reveal.active {
     opacity: 1;
@@ -71,6 +71,7 @@ body::before{
     linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
     background-size:50px 50px;
     z-index:-2;
+    pointer-events:none;
 }
 
 body::after{
@@ -82,14 +83,14 @@ body::after{
     top:-200px;
     right:-200px;
     z-index:-1;
+    pointer-events:none;
 }
 
 nav{
     position:fixed;
     top:0;
     width:100%;
-    backdrop-filter:blur(20px);
-    background:rgba(5,8,22,.75);
+    background:rgba(5,8,22,.95);
     border-bottom:1px solid rgba(255,255,255,.05);
     z-index:1000;
 }
@@ -105,7 +106,7 @@ nav{
 
 .logo{
     font-size:1.2rem;
-    font-weight:800;
+    font-weight:700;
     color:var(--primary);
 }
 
@@ -175,6 +176,11 @@ nav{
     border-radius:12px;
     text-decoration:none;
     font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
 }
 
 .primary{
@@ -188,15 +194,15 @@ nav{
 }
 
 .hero-card{
-    background:rgba(17,24,39,.65);
+    background:rgba(17,24,39,.95);
     border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
     border-radius:24px;
     padding:30px;
 }
 
 .hero-card h4{
     margin-bottom:20px;
+    font-weight:600;
 }
 
 .server-grid{
@@ -221,6 +227,7 @@ section{
 .section-title{
     font-size:2.5rem;
     margin-bottom:20px;
+    font-weight:700;
 }
 
 .section-subtitle{
@@ -247,6 +254,7 @@ section{
 .stat h2{
     color:var(--secondary);
     margin-bottom:10px;
+    font-weight:600;
 }
 
 .cards{
@@ -261,7 +269,7 @@ section{
     border-radius:24px;
     padding:30px;
     border:1px solid rgba(255,255,255,.05);
-    transition:.3s;
+    transition:.3s ease;
 }
 
 .card:hover{
@@ -271,6 +279,7 @@ section{
 
 .card h3{
     margin-bottom:20px;
+    font-weight:600;
 }
 
 .card ul{
@@ -292,10 +301,9 @@ section{
     border-left:4px solid var(--primary);
     border-radius:16px;
     margin-bottom:20px;
-    transition: 0.3s ease; /* Added for smooth hover */
+    transition: 0.3s ease;
 }
 
-/* Add this new hover rule right below it */
 .step:hover {
     transform: translateX(10px);
     border-left-color: var(--secondary);
@@ -305,6 +313,7 @@ section{
 .step h4{
     color:var(--secondary);
     margin-bottom:10px;
+    font-weight:600;
 }
 
 .lab-grid{
@@ -321,6 +330,11 @@ section{
     border:1px solid rgba(255,255,255,.05);
 }
 
+.lab-card h3{
+    font-weight:600;
+    margin-bottom:15px;
+}
+
 .badges{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -330,10 +344,7 @@ section{
 
 .badge{
     text-align:center;
-    background:linear-gradient(
-    135deg,
-    rgba(59,130,246,.15),
-    rgba(139,92,246,.15));
+    background:rgba(59,130,246,.08);
     padding:40px;
     border-radius:24px;
     border:1px solid rgba(59,130,246,.25);
@@ -342,6 +353,7 @@ section{
 .badge h3{
     font-size:2rem;
     margin-bottom:10px;
+    font-weight:700;
 }
 
 footer{
@@ -350,18 +362,16 @@ footer{
 }
 
 .cta{
-    background:linear-gradient(
-    135deg,
-    rgba(59,130,246,.15),
-    rgba(6,182,212,.15));
+    background:rgba(59,130,246,.08);
     padding:60px;
     border-radius:30px;
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(59,130,246,.15);
 }
 
 .cta h2{
     font-size:2.5rem;
     margin-bottom:20px;
+    font-weight:700;
 }
 
 .cta p{
@@ -669,13 +679,13 @@ Infrastructure Testing
     
     <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
         <!-- LinkedIn Button -->
-        <a href="https://linkedin.com/in/gokulnath15" target="_blank" style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <a href="https://linkedin.com/in/gokulnath15" target="_blank" style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; transition: 0.3s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.05)'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.469v6.766z"/></svg>
             LinkedIn
         </a>
         <!-- Email Button -->
-        <a href="mailto:your.email@example.com" style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <a href="mailto:your.email@example.com" style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; transition: 0.3s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.05)'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Email Me
         </a>
     </div>
@@ -685,19 +695,36 @@ Infrastructure Testing
 
 </footer>
 <script>
-    // Trigger animations on scroll
+    // Optimized scroll reveal with throttling
+    let ticking = false;
+    let lastRevealedIndex = -1;
+
     function reveal() {
         var reveals = document.querySelectorAll('.reveal');
+        var windowHeight = window.innerHeight;
+        
         for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
             var elementVisible = 100;
-            if (elementTop < windowHeight - elementVisible) {
+            
+            if (elementTop < windowHeight - elementVisible && i > lastRevealedIndex) {
                 reveals[i].classList.add('active');
+                lastRevealedIndex = i;
             }
         }
+        
+        ticking = false;
     }
-    window.addEventListener('scroll', reveal);
+
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(reveal);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
     // Trigger once on load
     reveal();
 </script>
