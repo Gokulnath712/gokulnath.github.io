@@ -291,120 +291,110 @@ section{
     color:var(--muted);
 }
 
-.timeline{
+/* Incident Cards Grid */
+.incident-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:28px;
     margin-top:50px;
-    position:relative;
-    padding-left:30px;
 }
 
-/* Timeline connector line */
-.timeline::before{
-    content:'';
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
-    border-radius:2px;
-}
-
-.step{
-    background:rgba(15,23,42,.8);
-    padding:28px;
-    border-left:4px solid var(--primary);
-    border-radius:16px;
-    margin-bottom:24px;
+.incident-card{
+    background:linear-gradient(135deg, rgba(15,23,42,.8), rgba(15,23,42,.6));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:32px;
     transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position:relative;
     overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
-/* Step number indicator circle */
-.step::before{
-    content:'';
-    position:absolute;
-    left:-18px;
-    top:28px;
-    width:16px;
-    height:16px;
-    background:var(--primary);
-    border:3px solid var(--bg);
-    border-radius:50%;
-    z-index:10;
-    transition:all 0.3s ease;
-}
-
-.step:hover::before{
-    width:20px;
-    height:20px;
-    left:-20px;
-    top:26px;
-    background:var(--secondary);
-    box-shadow:0 0 20px rgba(6, 182, 212, 0.6);
-}
-
-.step:hover {
-    transform:translateX(12px);
-    border-left-color:var(--secondary);
-    background:rgba(6,182,212,.05);
-    box-shadow:0 4px 24px rgba(6, 182, 212, 0.15), inset 0 1px 0 rgba(255,255,255,.05);
-    padding-left:32px;
-}
-
-/* Animated glow effect on hover */
-.step::after{
+/* Gradient overlay on hover */
+.incident-card::before{
     content:'';
     position:absolute;
     inset:0;
-    background:linear-gradient(90deg, transparent, rgba(59,130,246,.1), transparent);
+    background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(6,182,212,.1), transparent);
     opacity:0;
-    animation:shimmer 0s;
     transition:opacity 0.3s ease;
+    pointer-events:none;
 }
 
-.step:hover::after{
+.incident-card:hover::before{
     opacity:1;
-    animation:shimmer 0.6s ease;
 }
 
-@keyframes shimmer {
-    0% {
-        transform:translateX(-100%);
-    }
-    100% {
-        transform:translateX(100%);
-    }
+.incident-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(6,182,212,.4);
+    box-shadow:0 8px 32px rgba(6, 182, 212, 0.1), inset 0 1px 0 rgba(255,255,255,.05);
 }
 
-.step h4{
-    color:var(--secondary);
-    margin-bottom:12px;
+.incident-tag{
+    display:inline-block;
+    font-size:0.75rem;
     font-weight:700;
-    font-size:1.1rem;
+    letter-spacing:1px;
+    color:var(--secondary);
+    background:rgba(6,182,212,.15);
+    padding:6px 14px;
+    border-radius:20px;
+    border:1px solid rgba(6,182,212,.3);
+    width:fit-content;
     position:relative;
     z-index:2;
 }
 
-.step p{
+.incident-card h4{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--text);
+    margin:0;
+    position:relative;
+    z-index:2;
+}
+
+.incident-phase{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    position:relative;
+    z-index:2;
+    padding-bottom:16px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.incident-phase:last-of-type{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.incident-phase span{
+    font-size:0.95rem;
+    font-weight:700;
+    color:var(--secondary);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+}
+
+.incident-phase p, .incident-phase div{
+    font-size:0.95rem;
     color:var(--muted);
     line-height:1.6;
-    position:relative;
-    z-index:2;
-    font-size:0.95rem;
+    margin:0;
 }
 
-.step:nth-child(1) { border-left-color:var(--primary); }
-.step:nth-child(2) { border-left-color:rgba(59,130,246,.8); }
-.step:nth-child(3) { border-left-color:rgba(59,130,246,.6); }
-.step:nth-child(4) { border-left-color:rgba(6,182,212,.8); }
-.step:nth-child(5) { border-left-color:var(--secondary); }
-
-.step:nth-child(1)::before { background:var(--primary); }
-.step:nth-child(2)::before { background:rgba(59,130,246,.8); }
-.step:nth-child(3)::before { background:rgba(59,130,246,.6); }
-.step:nth-child(4)::before { background:rgba(6,182,212,.8); }
-.step:nth-child(5)::before { background:var(--secondary); }
+code{
+    background:rgba(59,130,246,.15);
+    color:var(--secondary);
+    padding:3px 8px;
+    border-radius:6px;
+    font-size:0.9em;
+    font-family:'Courier New', monospace;
+}
 
 .lab-grid{
     display:grid;
@@ -487,21 +477,16 @@ footer{
     display:none;
 }
 
-.timeline{
-    padding-left:20px;
+.incident-grid{
+    grid-template-columns:1fr;
 }
 
-.step::before{
-    left:-12px;
+.incident-card{
+    padding:24px;
 }
 
-.step:hover::before{
-    left:-14px;
-}
-
-.step:hover{
-    transform:translateX(8px);
-    padding-left:28px;
+.incident-card h4{
+    font-size:1.2rem;
 }
 }
 
@@ -515,37 +500,25 @@ footer{
     font-size:2.5rem;
 }
 
-.timeline{
-    padding-left:16px;
+.incident-card{
+    padding:20px;
+    gap:16px;
 }
 
-.step{
-    padding:20px 20px 20px 20px;
+.incident-card h4{
+    font-size:1.1rem;
 }
 
-.step::before{
-    left:-10px;
-    width:14px;
-    height:14px;
-    border-width:2px;
+.incident-phase{
+    gap:8px;
+    padding-bottom:12px;
 }
 
-.step:hover::before{
-    left:-11px;
-    width:16px;
-    height:16px;
+.incident-phase span{
+    font-size:0.85rem;
 }
 
-.step:hover{
-    transform:translateX(4px);
-    padding-left:20px;
-}
-
-.step h4{
-    font-size:1rem;
-}
-
-.step p{
+.incident-phase p, .incident-phase div{
     font-size:0.9rem;
 }
 }
@@ -667,76 +640,67 @@ Intune, and infrastructure operations.
 
 <section id="experience">
 
-<h2 class="section-title">Production Experience</h2>
+<h2 class="section-title">Real-World Incident Resolutions</h2>
 
-<div class="cards">
-
-<div class="card">
-<h3>Hospital IT Administration</h3>
-
-<ul>
-<li>Managed 30 production systems</li>
-<li>Network administration</li>
-<li>CCTV infrastructure support</li>
-<li>Biometric system management</li>
-<li>HMS troubleshooting</li>
-<li>User access management</li>
-</ul>
-
-</div>
-
-<div class="card">
-<h3>Infrastructure Ownership</h3>
-
-<ul>
-<li>Sole IT administrator for branch operations</li>
-<li>Network troubleshooting</li>
-<li>Endpoint support</li>
-<li>Operational continuity</li>
-<li>Vendor coordination</li>
-<li>Issue resolution</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="timeline">
-
-<div class="step">
-<h4>01 — Problem</h4>
-<p>
-Hospital Management System became inaccessible despite working internet connectivity.
+<p class="section-subtitle">
+Demonstrating technical depth and problem-solving methodology through actual incidents handled in production healthcare environments.
 </p>
-</div>
 
-<div class="step">
-<h4>02 — Investigation</h4>
-<p>
-Reviewed endpoint networking, DNS behavior, firewall rules and routing paths.
-</p>
-</div>
+<div class="incident-grid">
+    
+    <!-- Card 1: The Hero Story (Business Continuity) -->
+    <div class="incident-card reveal">
+        <div class="incident-tag">BUSINESS CONTINUITY</div>
+        <h4>Peak-Hour System Bypass</h4>
+        <div class="incident-phase">
+            <span>Problem</span>
+            <div>Critical Hospital Management System (HMS) failed completely during peak hours. The external vendor declared a total server outage with no ETA for recovery.</div>
+        </div>
+        <div class="incident-phase">
+            <span>Root Cause</span>
+            <div>While the vendor reported a complete failure, proactive internal testing revealed that only the primary POS-integrated web node had crashed, while secondary application URLs remained active.</div>
+        </div>
+        <div class="incident-phase">
+            <span>Resolution</span>
+            <div>Independently identified the active secondary node, collaborated directly with the vendor engineering team to secure emergency authorization, and immediately routed hospital traffic to the working URL to prevent disruption.</div>
+        </div>
+    </div>
 
-<div class="step">
-<h4>03 — Root Cause</h4>
-<p>
-Identified a granular firewall routing issue affecting HMS communication.
-</p>
-</div>
+    <!-- Card 2: The Honest Story (Vendor Management & Diagnostics) -->
+    <div class="incident-card reveal">
+        <div class="incident-tag">NETWORK & VENDOR MGMT</div>
+        <h4>HMS Connectivity & Session Fix</h4>
+        <div class="incident-phase">
+            <span>Problem</span>
+            <div>The Hospital Management System (HMS) suddenly became inaccessible across all 30 endpoints despite active internet connectivity.</div>
+        </div>
+        <div class="incident-phase">
+            <span>Root Cause</span>
+            <div>Diagnosed that the issue was not on the endpoint level, but rather the network firewall's "live count" (concurrent session limit) had maxed out, dropping new application packets.</div>
+        </div>
+        <div class="incident-phase">
+            <span>Resolution</span>
+            <div>Performed an immediate reset of the firewall live count to instantly restore hospital operations, and effectively escalated the ticket to the external firewall vendor for long-term configuration management.</div>
+        </div>
+    </div>
 
-<div class="step">
-<h4>04 — Resolution</h4>
-<p>
-Adjusted routing configuration, validated connectivity and restored application access.
-</p>
-</div>
-
-<div class="step">
-<h4>05 — Result</h4>
-<p>
-HMS services restored successfully without hardware replacement.
-</p>
-</div>
+    <!-- Card 3: The Gritty Story (Command Line / DHCP) -->
+    <div class="incident-card reveal">
+        <div class="incident-tag">NETWORK & SECURITY</div>
+        <h4>CCTV IP Conflict Resolution</h4>
+        <div class="incident-phase">
+            <span>Problem</span>
+            <div>Critical facility security cameras were randomly going offline and dropping connection to the monitoring system.</div>
+        </div>
+        <div class="incident-phase">
+            <span>Root Cause</span>
+            <div>Ping tests showed intermittent replies. Used command-line diagnostics (<code>arp -a</code>) to analyze the ARP cache, identifying a local network DHCP IP conflict disrupting the camera's connectivity.</div>
+        </div>
+        <div class="incident-phase">
+            <span>Resolution</span>
+            <div>Reconfigured the affected hardware with assigned static IP addresses to eliminate lease conflicts. Resulted in 100% camera uptime since implementation.</div>
+        </div>
+    </div>
 
 </div>
 
