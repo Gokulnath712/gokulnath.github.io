@@ -1,0 +1,705 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gokulnath | IT Administrator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Scroll Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+:root{
+    --bg:#050816;
+    --card:#0f172a;
+    --card2:#111827;
+    --primary:#3b82f6;
+    --secondary:#06b6d4;
+    --accent:#8b5cf6;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:50px 50px;
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(59,130,246,.15), transparent 70%);
+    top:-200px;
+    right:-200px;
+    z-index:-1;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    backdrop-filter:blur(20px);
+    background:rgba(5,8,22,.75);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    z-index:1000;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 20px;
+}
+
+.logo{
+    font-size:1.2rem;
+    font-weight:800;
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 20px 80px;
+}
+
+.hero-content{
+    max-width:1200px;
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero-text h3{
+    color:var(--secondary);
+    margin-bottom:15px;
+    font-size:1rem;
+}
+
+.hero-text h1{
+    font-size:4.5rem;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:var(--muted);
+    font-size:1.1rem;
+    line-height:1.8;
+}
+
+.location{
+    margin-top:25px;
+    color:#cbd5e1;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:14px 26px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.primary{
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,.1);
+    color:white;
+}
+
+.hero-card{
+    background:rgba(17,24,39,.65);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border-radius:24px;
+    padding:30px;
+}
+
+.hero-card h4{
+    margin-bottom:20px;
+}
+
+.server-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.server-item{
+    background:#0b1220;
+    padding:20px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:100px 20px;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    max-width:700px;
+    line-height:1.8;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:50px;
+}
+
+.stat{
+    background:var(--card);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.stat h2{
+    color:var(--secondary);
+    margin-bottom:10px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    margin-top:50px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:24px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(59,130,246,.4);
+}
+
+.card h3{
+    margin-bottom:20px;
+}
+
+.card ul{
+    list-style:none;
+}
+
+.card li{
+    padding:8px 0;
+    color:var(--muted);
+}
+
+.timeline{
+    margin-top:40px;
+}
+
+.step{
+    background:var(--card);
+    padding:25px;
+    border-left:4px solid var(--primary);
+    border-radius:16px;
+    margin-bottom:20px;
+    transition: 0.3s ease; /* Added for smooth hover */
+}
+
+/* Add this new hover rule right below it */
+.step:hover {
+    transform: translateX(10px);
+    border-left-color: var(--secondary);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+}
+
+.step h4{
+    color:var(--secondary);
+    margin-bottom:10px;
+}
+
+.lab-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.lab-card{
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.badges{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.badge{
+    text-align:center;
+    background:linear-gradient(
+    135deg,
+    rgba(59,130,246,.15),
+    rgba(139,92,246,.15));
+    padding:40px;
+    border-radius:24px;
+    border:1px solid rgba(59,130,246,.25);
+}
+
+.badge h3{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+footer{
+    padding:100px 20px;
+    text-align:center;
+}
+
+.cta{
+    background:linear-gradient(
+    135deg,
+    rgba(59,130,246,.15),
+    rgba(6,182,212,.15));
+    padding:60px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.cta h2{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+.cta p{
+    color:var(--muted);
+    margin-bottom:30px;
+}
+
+@media(max-width:900px){
+
+.hero-content{
+    grid-template-columns:1fr;
+}
+
+.hero-text h1{
+    font-size:3rem;
+}
+
+.stats{
+    grid-template-columns:1fr 1fr;
+}
+
+.nav-links{
+    display:none;
+}
+}
+
+@media(max-width:600px){
+
+.stats{
+    grid-template-columns:1fr;
+}
+
+.hero-text h1{
+    font-size:2.5rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="nav-container">
+<div class="logo">GOKULNATH</div>
+
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#lab">Home Lab</a>
+<a href="#certifications">Certifications</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-text">
+
+<h3>IT ADMINISTRATOR</h3>
+
+<h1>Building Reliable IT Infrastructure That Keeps Operations Running</h1>
+
+<p>
+1 Year of Professional IT Administration Experience focused on endpoint management,
+network operations, infrastructure support, and enterprise IT systems.
+</p>
+
+<div class="location">
+📍 Chennai • Bengaluru • Hyderabad
+</div>
+
+<div class="buttons">
+<a href="#experience" class="btn primary">View Experience</a>
+<a href="#certifications" class="btn secondary">Certifications</a>
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<h4>Infrastructure Snapshot</h4>
+
+<div class="server-grid">
+
+<div class="server-item">
+<h2>30</h2>
+<p>Managed Systems</p>
+</div>
+
+<div class="server-item">
+<h2>1</h2>
+<p>Year Experience</p>
+</div>
+
+<div class="server-item">
+<h2>24GB</h2>
+<p>Home Lab RAM</p>
+</div>
+
+<div class="server-item">
+<h2>24/7</h2>
+<p>Healthcare Operations</p>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="about">
+
+<h2 class="section-title">About Me</h2>
+
+<p class="section-subtitle">
+I have exactly 1 year of professional IT administration experience supporting
+critical healthcare operations. My focus is centralized infrastructure management,
+endpoint administration, cloud technologies, and enterprise IT operations.
+
+I am intentionally moving away from field-support-oriented roles and targeting
+positions focused on systems administration, endpoint management, Azure,
+Intune, and infrastructure operations.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h2>30+</h2>
+<p>Managed Endpoints</p>
+</div>
+
+<div class="stat">
+<h2>1</h2>
+<p>Year Experience</p>
+</div>
+
+<div class="stat">
+<h2>24GB</h2>
+<p>Virtual Lab</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Infrastructure Focus</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="experience">
+
+<h2 class="section-title">Production Experience</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Hospital IT Administration</h3>
+
+<ul>
+<li>Managed 30 production systems</li>
+<li>Firewall administration</li>
+<li>CCTV infrastructure support</li>
+<li>Biometric system management</li>
+<li>HMS troubleshooting</li>
+<li>User access management</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>Infrastructure Ownership</h3>
+
+<ul>
+<li>Sole IT administrator for branch operations</li>
+<li>Network troubleshooting</li>
+<li>Endpoint support</li>
+<li>Operational continuity</li>
+<li>Vendor coordination</li>
+<li>Issue resolution</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="timeline">
+
+<div class="step">
+<h4>01 — Problem</h4>
+<p>
+Hospital Management System became inaccessible despite working internet connectivity.
+</p>
+</div>
+
+<div class="step">
+<h4>02 — Investigation</h4>
+<p>
+Reviewed endpoint networking, DNS behavior, firewall rules and routing paths.
+</p>
+</div>
+
+<div class="step">
+<h4>03 — Root Cause</h4>
+<p>
+Identified a granular firewall routing issue affecting HMS communication.
+</p>
+</div>
+
+<div class="step">
+<h4>04 — Resolution</h4>
+<p>
+Adjusted routing configuration, validated connectivity and restored application access.
+</p>
+</div>
+
+<div class="step">
+<h4>05 — Result</h4>
+<p>
+HMS services restored successfully without hardware replacement.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="lab">
+
+<h2 class="section-title">Home Lab</h2>
+
+<p class="section-subtitle">
+Active Directory and Intune experience comes from a highly active 24GB RAM virtual lab,
+not from current production. The lab is used extensively for testing infrastructure
+concepts and administration workflows.
+</p>
+
+<div class="lab-grid">
+
+<div class="lab-card">
+<h3>Active Directory</h3>
+<p>
+OU Design<br><br>
+User Administration<br><br>
+Group Policy Testing<br><br>
+Security Groups
+</p>
+</div>
+
+<div class="lab-card">
+<h3>Microsoft Intune</h3>
+<p>
+Device Enrollment<br><br>
+Compliance Policies<br><br>
+Application Deployment<br><br>
+Endpoint Security
+</p>
+</div>
+
+<div class="lab-card">
+<h3>Virtual Infrastructure</h3>
+<p>
+Windows VMs<br><br>
+Linux VMs<br><br>
+Remote Deployments<br><br>
+Infrastructure Testing
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="certifications">
+
+<h2 class="section-title">Certifications</h2>
+
+<div class="badges">
+
+<div class="badge">
+<h3>MD-102</h3>
+<p>Endpoint Administrator Associate</p>
+<br>
+<strong>IN PROGRESS</strong>
+</div>
+
+<div class="badge">
+<h3>AZ-104</h3>
+<p>Azure Administrator Associate</p>
+<br>
+<strong>IN PROGRESS</strong>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="cta">
+    <h2>Ready for an Enterprise Environment</h2>
+    <p>Targeting IT Administration, Azure, and Infrastructure Operations roles in Chennai, Bengaluru, and Hyderabad.</p>
+    
+    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
+        <!-- LinkedIn Button -->
+        <a href="https://linkedin.com/in/gokulnath15" target="_blank" style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn
+        </a>
+        <!-- Email Button -->
+        <a href="mailto:your.email@example.com" style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Email Me
+        </a>
+    </div>
+
+    <a href="resume.pdf" class="btn primary">Download Resume PDF</a>
+</div>
+
+</footer>
+<script>
+    // Trigger animations on scroll
+    function reveal() {
+        var reveals = document.querySelectorAll('.reveal');
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add('active');
+            }
+        }
+    }
+    window.addEventListener('scroll', reveal);
+    // Trigger once on load
+    reveal();
+</script>
+</body>
+</html>
